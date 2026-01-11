@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const BentoLayout = ({ children }) => {
+const BentoLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="bento-grid">
             {children}

@@ -1,20 +1,27 @@
 import React from 'react';
 
-const ProjectCard = ({ title, description, tags, color = '#3b82f6' }) => {
-    return (
-        <div className="card project-card">
-            <div className="project-content">
-                <div className="project-icon" style={{ backgroundColor: color }}></div>
-                <h3 className="project-title">{title}</h3>
-                <p className="project-desc">{description}</p>
-                <div className="project-tags">
-                    {tags.map(tag => <span key={tag}>{tag}</span>)}
-                </div>
-            </div>
-            <div className="hover-reveal">
-                <span>View Project ↗</span>
-            </div>
-            <style>{`
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  tags: string[];
+  color?: string;
+}
+
+const ProjectCard = ({ title, description, tags, color = '#3b82f6' }: ProjectCardProps) => {
+  return (
+    <div className="card project-card">
+      <div className="project-content">
+        <div className="project-icon" style={{ backgroundColor: color }}></div>
+        <h3 className="project-title">{title}</h3>
+        <p className="project-desc">{description}</p>
+        <div className="project-tags">
+          {tags.map(tag => <span key={tag}>{tag}</span>)}
+        </div>
+      </div>
+      <div className="hover-reveal">
+        <span>View Project ↗</span>
+      </div>
+      <style>{`
         .project-card {
           justify-content: space-between;
           min-height: 240px;
@@ -72,8 +79,8 @@ const ProjectCard = ({ title, description, tags, color = '#3b82f6' }) => {
           transform: translateY(0);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ProjectCard;

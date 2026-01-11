@@ -1,14 +1,20 @@
 import React from 'react';
 
-const SocialCard = ({ platform, handle, link }) => {
-    return (
-        <a href={link} target="_blank" rel="noopener noreferrer" className="card social-card">
-            <div className="social-content">
-                <span className="platform">{platform}</span>
-                <span className="handle">{handle}</span>
-            </div>
-            <div className="arrow">↗</div>
-            <style>{`
+interface SocialCardProps {
+  platform: string;
+  handle: string;
+  link: string;
+}
+
+const SocialCard = ({ platform, handle, link }: SocialCardProps) => {
+  return (
+    <a href={link} target="_blank" rel="noopener noreferrer" className="card social-card">
+      <div className="social-content">
+        <span className="platform">{platform}</span>
+        <span className="handle">{handle}</span>
+      </div>
+      <div className="arrow">↗</div>
+      <style>{`
         .social-card {
           flex-direction: row;
           align-items: center;
@@ -37,8 +43,8 @@ const SocialCard = ({ platform, handle, link }) => {
           color: var(--text-primary);
         }
       `}</style>
-        </a>
-    );
+    </a>
+  );
 };
 
 export default SocialCard;

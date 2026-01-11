@@ -1,4 +1,7 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const Header = () => {
   const [time, setTime] = useState('');
@@ -24,7 +27,13 @@ const Header = () => {
 
       <div className="profile-section">
         <div className="avatar">
-          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Profile" />
+          <Image
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+            alt="Profile"
+            width={80}
+            height={80}
+            priority
+          />
         </div>
 
         <div className="identity">
