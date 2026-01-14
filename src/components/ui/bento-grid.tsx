@@ -1,4 +1,15 @@
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1, // Adjust this value as needed
+        },
+    },
+};
 
 export const BentoGrid = ({
     className,
@@ -8,15 +19,23 @@ export const BentoGrid = ({
     children?: React.ReactNode;
 }) => {
     return (
-        <div
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
             className={cn(
                 "grid md:auto-rows-[18rem] grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl mx-auto ",
                 className
             )}
         >
             {children}
-        </div>
+        </motion.div>
     );
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
 };
 
 export const BentoGridItem = ({
@@ -33,7 +52,8 @@ export const BentoGridItem = ({
     icon?: React.ReactNode;
 }) => {
     return (
-        <div
+        <motion.div
+            variants={itemVariants}
             className={cn(
                 "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
                 className
@@ -49,6 +69,6 @@ export const BentoGridItem = ({
                     {description}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
