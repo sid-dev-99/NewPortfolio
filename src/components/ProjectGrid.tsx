@@ -37,33 +37,51 @@ const ProjectGrid = () => {
         Featured Work
       </h2>
       <BentoGrid className="max-w-4xl mx-auto">
-        {/* Row 1 */}
-        <div className="md:col-span-2 row-span-1">
-          <GithubCard />
-        </div>
+        {/* Row 1: Spotify + Project 1 */}
         <div className="md:col-span-1 row-span-1">
           <SpotifyCard />
         </div>
-
-        {/* Row 2: Projects */}
-        {projects.map((project, i) => (
+        {projects.length > 0 && (
           <BentoGridItem
-            key={i}
-            title={project.title}
-            description={project.description}
+            title={projects[0].title}
+            description={projects[0].description}
             header={
               <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden relative">
                 <Image
-                  src={project.image}
-                  alt={project.title}
+                  src={projects[0].image}
+                  alt={projects[0].title}
                   fill
                   className="object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
             }
-            className={i === 0 || i === 3 ? "md:col-span-2" : ""}
+            className="md:col-span-2"
           />
-        ))}
+        )}
+
+        {/* Row 2: Project 2 (Full Width) */}
+        {projects.length > 1 && (
+          <BentoGridItem
+            title={projects[1].title}
+            description={projects[1].description}
+            header={
+              <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100 overflow-hidden relative">
+                <Image
+                  src={projects[1].image}
+                  alt={projects[1].title}
+                  fill
+                  className="object-cover opacity-80 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            }
+            className="md:col-span-3"
+          />
+        )}
+
+        {/* Row 3: GitHub (Full Width) */}
+        <div className="md:col-span-3 row-span-1">
+          <GithubCard />
+        </div>
       </BentoGrid>
     </div>
   );
