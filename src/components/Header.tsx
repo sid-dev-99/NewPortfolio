@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Mail, Github, Linkedin, Twitter, Download, MapPin } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [time, setTime] = useState('');
@@ -16,182 +18,110 @@ const Header = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const socialLinks = [
+    { name: 'Email Me', icon: Mail, href: 'mailto:siddharth@example.com' },
+    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/rawsid' },
+    { name: 'GitHub', icon: Github, href: 'https://github.com/sid-dev-99' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/siddharth-sharma' },
+  ];
+
   return (
-    <header className="header-section">
-      <div className="top-bar">
-        <div className="time">IN {time}</div>
-        <div className="location">
-          <span className="location-icon">◎</span> Mumbai, India
+    <header className="mb-12 sm:mb-16 pt-6 sm:pt-8">
+      {/* Top bar */}
+      <div className="flex justify-between items-center text-neutral-500 dark:text-neutral-400 text-sm font-mono mb-12 sm:mb-16">
+        <div className="flex items-center gap-2">
+          <span className="opacity-60">IN</span>
+          <span className="tabular-nums">{time}</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <MapPin size={14} className="opacity-70" />
+            <span>Bangalore, India</span>
+          </div>
+          <ThemeToggle />
         </div>
       </div>
 
-      <div className="profile-section">
-        <div className="avatar">
-          <Image
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
-            alt="Profile"
-            width={80}
-            height={80}
-            priority
-          />
+      {/* Profile section */}
+      <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="relative">
+          {/* Glow */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 rounded-full opacity-40 dark:opacity-50 blur-xl animate-pulse" />
+          {/* Avatar */}
+          <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-full overflow-hidden border-3 border-neutral-200 dark:border-white/15 shadow-xl dark:shadow-2xl bg-neutral-100 dark:bg-neutral-900">
+            <Image
+              src="/profile3.png"
+              alt="Siddharth Sharma"
+              width={112}
+              height={112}
+              priority
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
-        <div className="identity">
-          <h1 className="name">MEGH</h1>
-          <p className="handle">@meghtrix</p>
+        <div>
+          <h1 className="text-2xl sm:text-4xl font-bold font-mono text-neutral-900 dark:text-white mb-1">
+            Siddharth
+          </h1>
+          <p className="text-neutral-500 dark:text-neutral-400 font-mono text-sm sm:text-base">
+            @rawsid
+          </p>
         </div>
       </div>
 
-      <div className="bio">
+      {/* Bio */}
+      <div className="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base leading-relaxed mb-8 space-y-2">
         <p>
-          I'm <strong>Megh</strong>, a 19yo developer living in Mumbai, India. I love to code and make (break) things.
+          I'm <strong className="text-neutral-900 dark:text-white font-medium">Siddharth</strong>, a 22yo developer living in Bangalore, India. I love to code and make (break) things.
         </p>
         <p>
-          I love both <strong>Development & Design</strong>. So yes, I can make things look good and actually work. (Shocking, I know)
+          I love both <strong className="text-neutral-900 dark:text-white font-medium">Development & Design</strong>. So yes, I can make things look good and actually work. <span className="opacity-70">(Shocking, I know)</span>
         </p>
         <p>
-          When I'm <strong>not busy</strong>, you'll usually find me watching movies, playing chess, hitting the gym, cycling, or just catching up on some much-needed sleep.
+          When I'm <strong className="text-neutral-900 dark:text-white font-medium">not busy</strong>, you'll usually find me watching movies, playing chess, hitting the gym, cycling, or just catching up on some much-needed sleep.
         </p>
       </div>
 
-      <div className="status-row">
-        <div className="status-badge">
-          <span className="status-dot"></span> Available for new opportunities
+      {/* Status row */}
+      <div className="flex flex-wrap gap-3 mb-8 sm:mb-10">
+        <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 rounded-full text-green-600 dark:text-green-400 text-sm font-medium">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          Available for new opportunities
         </div>
-        <a href="#" className="cv-btn">
-          <span className="icon">↓</span> Download CV
+        <a
+          href="/resume.pdf"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-full text-neutral-700 dark:text-neutral-200 text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+          download
+        >
+          <Download size={16} />
+          Download CV
         </a>
       </div>
 
-      <div className="social-row">
-        <p className="find-me">Where to find me (digitally) if you wish to</p>
-        <div className="social-buttons">
-          <a href="#" className="social-btn">✉ Email Me</a>
-          <a href="#" className="social-btn">Twitter</a>
-          <a href="#" className="social-btn">GitHub</a>
-          <a href="#" className="social-btn">LinkedIn</a>
-          <a href="#" className="social-btn">Peerlist</a>
+      {/* Social links */}
+      <div>
+        <p className="text-neutral-500 dark:text-neutral-500 text-sm mb-4">
+          Where to find me (digitally) if you wish to
+        </p>
+        <div className="flex flex-wrap gap-2 sm:gap-3">
+          {socialLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="inline-flex items-center gap-2 px-3 py-2 bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700/50 rounded-lg text-neutral-600 dark:text-neutral-400 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-white transition-all"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <link.icon size={16} />
+              {link.name}
+            </a>
+          ))}
         </div>
       </div>
-
-      <style>{`
-        .header-section {
-          margin-bottom: 4rem;
-        }
-        .top-bar {
-          display: flex;
-          justify-content: space-between;
-          color: var(--text-secondary);
-          font-size: 0.85rem;
-          margin-bottom: 4rem;
-          font-family: var(--font-sans);
-        }
-        .profile-section {
-          display: flex;
-          align-items: center;
-          gap: 1.5rem;
-          margin-bottom: 2rem;
-        }
-        .avatar {
-          width: 80px;
-          height: 80px;
-          border-radius: 50%;
-          overflow: hidden;
-          background: #222;
-        }
-        .avatar img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .name {
-          font-family: var(--font-mono);
-          font-size: 2rem;
-          letter-spacing: 2px;
-          line-height: 1;
-          margin-bottom: 0.25rem;
-        }
-        .handle {
-          color: var(--text-secondary);
-          font-family: var(--font-mono);
-          font-size: 1rem;
-        }
-        .bio {
-          color: var(--text-secondary);
-          font-size: 1rem;
-          line-height: 1.8;
-          margin-bottom: 2.5rem;
-        }
-        .bio p {
-          margin-bottom: 1rem;
-        }
-        .bio strong {
-          color: var(--text-primary);
-          font-weight: 500;
-        }
-        .status-row {
-          display: flex;
-          gap: 1rem;
-          margin-bottom: 3rem;
-          flex-wrap: wrap;
-        }
-        .status-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.6rem 1.2rem;
-          background: #111;
-          border-radius: 8px;
-          font-size: 0.9rem;
-          color: var(--text-primary);
-        }
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          background: #ef4444;
-          border-radius: 50%;
-          box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
-        }
-        .cv-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.6rem 1.2rem;
-          background: #111;
-          border-radius: 8px;
-          font-size: 0.9rem;
-          color: var(--text-primary);
-          text-decoration: none;
-          transition: background 0.2s;
-        }
-        .cv-btn:hover {
-          background: #222;
-        }
-        .find-me {
-          color: var(--text-secondary);
-          margin-bottom: 1rem;
-          font-size: 0.9rem;
-        }
-        .social-buttons {
-          display: flex;
-          gap: 0.8rem;
-          flex-wrap: wrap;
-        }
-        .social-btn {
-          padding: 0.6rem 1.2rem;
-          background: #111;
-          border: 1px solid #222;
-          border-radius: 8px;
-          color: var(--text-secondary);
-          font-size: 0.9rem;
-          text-decoration: none;
-          transition: all 0.2s;
-        }
-        .social-btn:hover {
-          border-color: var(--text-primary);
-          color: var(--text-primary);
-        }
-      `}</style>
     </header>
   );
 };

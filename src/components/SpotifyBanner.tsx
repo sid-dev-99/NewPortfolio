@@ -49,9 +49,9 @@ export const SpotifyBanner = () => {
 
     return (
         <div className="w-full max-w-2xl mx-auto mb-8">
-            <div className="rounded-xl p-3 bg-[#111] border border-white/5 flex items-center justify-between gap-4 shadow-lg">
+            <div className="rounded-xl p-3 bg-white dark:bg-[#111] border border-neutral-200 dark:border-white/5 flex items-center justify-between gap-4 shadow-sm dark:shadow-lg">
                 <div className="flex items-center gap-4 min-w-0 flex-1">
-                    <div className="relative h-12 w-12 rounded-md overflow-hidden flex-shrink-0 bg-neutral-800">
+                    <div className="relative h-12 w-12 rounded-md overflow-hidden flex-shrink-0 bg-neutral-100 dark:bg-neutral-800">
                         {data?.albumArt ? (
                             <Image
                                 src={data.albumArt}
@@ -61,7 +61,7 @@ export const SpotifyBanner = () => {
                                 sizes="48px"
                             />
                         ) : (
-                            <div className="bg-neutral-800 w-full h-full" />
+                            <div className="bg-neutral-100 dark:bg-neutral-800 w-full h-full" />
                         )}
                     </div>
 
@@ -72,10 +72,10 @@ export const SpotifyBanner = () => {
                                 Last played
                             </span>
                         </div>
-                        <h3 className="font-bold text-white text-sm truncate leading-tight">
+                        <h3 className="font-bold text-neutral-900 dark:text-white text-sm truncate leading-tight">
                             {data?.title}
                         </h3>
-                        <p className="text-xs text-neutral-400 truncate">
+                        <p className="text-xs text-neutral-500 dark:text-neutral-400 truncate">
                             by {data?.artist}
                         </p>
                     </div>
@@ -83,12 +83,12 @@ export const SpotifyBanner = () => {
 
                 <button
                     onClick={togglePlay}
-                    className="h-10 w-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center hover:bg-white/10 transition-colors flex-shrink-0 cursor-pointer group"
+                    className="h-10 w-10 rounded-lg bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/5 flex items-center justify-center hover:bg-neutral-200 dark:hover:bg-white/10 transition-colors flex-shrink-0 cursor-pointer group"
                 >
                     {isPlaying ? (
-                        <Pause size={16} className="text-neutral-300 group-hover:text-white fill-current" />
+                        <Pause size={16} className="text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white fill-current" />
                     ) : (
-                        <Play size={16} className="text-neutral-300 group-hover:text-white fill-current ml-0.5" />
+                        <Play size={16} className="text-neutral-600 dark:text-neutral-300 group-hover:text-neutral-900 dark:group-hover:text-white fill-current ml-0.5" />
                     )}
                 </button>
             </div>
