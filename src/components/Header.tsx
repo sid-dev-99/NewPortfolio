@@ -44,19 +44,32 @@ const Header = () => {
 
       {/* Profile section */}
       <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
-        <div className="relative">
-          {/* Glow */}
-          <div className="absolute -inset-2 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 rounded-full opacity-40 dark:opacity-50 blur-xl animate-pulse" />
-          {/* Avatar */}
-          <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-full overflow-hidden border-3 border-neutral-200 dark:border-white/15 shadow-xl dark:shadow-2xl bg-neutral-100 dark:bg-neutral-900">
+        <div className="relative group">
+          {/* Outer animated ring */}
+          <div className="absolute -inset-1.5 sm:-inset-2 rounded-full bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 opacity-75 group-hover:opacity-100 blur-sm animate-spin-slow"
+            style={{ animationDuration: '8s' }} />
+
+          {/* Inner glow */}
+          <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-green-400/50 to-emerald-600/50 opacity-60" />
+
+          {/* Avatar container */}
+          <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-white dark:border-neutral-800 shadow-2xl bg-neutral-100 dark:bg-neutral-900 ring-2 ring-green-400/30">
             <Image
-              src="/profile3.png"
+              src="/xv.jpeg"
               alt="Siddharth Sharma"
               width={112}
               height={112}
               priority
               className="w-full h-full object-cover"
             />
+          </div>
+
+          {/* Online status indicator */}
+          <div className="absolute -bottom-0.5 -right-0.5 sm:bottom-0 sm:right-0">
+            <span className="relative flex h-4 w-4 sm:h-5 sm:w-5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 sm:h-5 sm:w-5 bg-green-500 border-2 border-white dark:border-neutral-900"></span>
+            </span>
           </div>
         </div>
 
