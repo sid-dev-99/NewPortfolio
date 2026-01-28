@@ -30,6 +30,22 @@ const Navbar = () => {
         .nav-links a:hover {
           color: var(--text-primary);
         }
+
+        @media (max-width: 768px) {
+          .navbar {
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+          }
+          .navbar-content {
+            justify-content: center;
+          }
+          .nav-links {
+            gap: 1rem;
+          }
+          .nav-links a {
+            font-size: 0.85rem;
+          }
+        }
       `}</style>
     </nav>
   );
