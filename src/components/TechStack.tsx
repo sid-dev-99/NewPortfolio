@@ -16,7 +16,7 @@ const technologies = [
   { name: 'GitHub', icon: 'https://cdn.simpleicons.org/github' },
   { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
   { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker' },
-  { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonaws' },
+  { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel' },
 ];
 
 const TechStack = () => {

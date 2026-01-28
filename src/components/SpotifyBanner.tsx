@@ -48,10 +48,10 @@ export const SpotifyBanner = () => {
     }
 
     return (
-        <div className="w-full max-w-2xl mx-auto mb-8">
+        <div className="w-full mb-8">
             <div className="rounded-xl p-3 bg-white dark:bg-[#111] border border-neutral-200 dark:border-white/5 flex items-center justify-between gap-4 shadow-sm dark:shadow-lg">
                 <div className="flex items-center gap-4 min-w-0 flex-1">
-                    <div className="relative h-12 w-12 rounded-md overflow-hidden flex-shrink-0 bg-neutral-100 dark:bg-neutral-800">
+                    <div className="relative h-12 w-12 rounded-md overflow-hidden flex-shrink-0 bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center">
                         {data?.albumArt ? (
                             <Image
                                 src={data.albumArt}
@@ -59,10 +59,15 @@ export const SpotifyBanner = () => {
                                 fill
                                 className="object-cover"
                                 sizes="48px"
+                                onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                }}
                             />
-                        ) : (
-                            <div className="bg-neutral-100 dark:bg-neutral-800 w-full h-full" />
-                        )}
+                        ) : null}
+                        {/* Fallback music icon */}
+                        <svg className="w-6 h-6 text-neutral-400 dark:text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                        </svg>
                     </div>
 
                     <div className="flex flex-col min-w-0 justify-center">
